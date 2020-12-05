@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>Коврижко Наталия</p>
+	<p>Вариант 4 : Создать программу, запускающую бегущие часы с датой в поле другого фрейма, если курсор мыши попал на текстовое поле другого фрейма, в котором при вводе не оказалось  прописных русских букв.</p>
+	<iframe src="frame2.html"  width = "1495px" height = "60px" id="frame2" frameborder="0" scrolling="no"></iframe>
+	<iframe src="frame1.html" width = "1500px" height = "600px" id="frame1" frameborder="0" scrolling="no"></iframe>
+</body>
+<script>
+		const frame2 = document.getElementById("frame2");
+		const frame1 = document.getElementById("frame1");
+		frame2.onload = () => onLoadFrame(frame2);
+		let text;
+		let img;
+		function onLoadFrame(currentFrame) {
+			document.getElementById("frame1").contentDocument.getElementsByTagName('span')[0].style.display = "none";
+		    text = currentFrame.contentDocument.getElementById('text');
+		    img = frame1.contentDocument.getElementById('img-background');
+		    img.setAttribute("style", "filter:grayscale(1)");
+		    console.log(text);
+		}
+	
+
+		function showTime(){
+			if(text.value.search(/[А-Яа-я]/) != -1 || text.value == ""){
+				document.getElementById("frame1").contentDocument.getElementsByTagName('span')[0].style.display = "none";
+				 img.setAttribute("style", "filter:grayscale(1)");
+			}
+			else{
+				document.getElementById("frame1").contentDocument.getElementsByTagName('span')[0].style.display = "block";
+				 img.setAttribute("style", "filter:grayscale(0)");
+			}
+		}
+		
+		frame2.onmouseover = function(){
+  			document.getElementById("frame2").contentDocument.getElementById('text').addEventListener("input", showTime);
+  			showTime();
+  			console.log("1");
+		}
+		frame2.onmouseout = function(){
+  			document.getElementById("frame1").contentDocument.getElementsByTagName('span')[0].style.display = "none";
+  			 img.setAttribute("style", "filter:grayscale(1)");
+		}
+	</script>
+</html>

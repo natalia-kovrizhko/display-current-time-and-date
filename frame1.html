@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab4</title>
+	</head>
+<link href="style.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald|Roboto:100" rel="stylesheet">
+<body>
+	<div class="main-container">
+		<h1>REAL TIME AND DATE</h1>
+		<span id="clock"></span>
+			<img id="img-background" src="https://miro.medium.com/max/3200/0*cGDKbUrA_8vJC4d3">
+	</div>
+	<script>
+		let span = document.getElementById('clock');
+
+		function time() {
+			let d = new Date();
+			let s = d.getSeconds();
+			let m = d.getMinutes();
+			let h = d.getHours();
+			let today = new Date();
+			let dd = String(today.getDate()).padStart(2, '0');
+			let mm = String(today.getMonth() + 1).padStart(2, '0'); 
+			let yyyy = today.getFullYear();
+
+			span.innerHTML = dd + '/' + mm + '/' + yyyy + '<br>' +h + ":" + m + ":" + s;
+		}
+
+		setInterval(time, 1000);
+	</script>
+</body>
+</html>
