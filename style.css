@@ -42,4 +42,5 @@ input {
   border: 5px double #aaa6a8;
   border-radius: 40px;
   height:15px;
+  outline: none;
 }
